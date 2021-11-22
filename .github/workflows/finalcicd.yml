@@ -3,23 +3,6 @@ on:
   push:
     branches: [ main ]
 jobs:
-  tag-test:
-    runs-on: ubuntu-latest 	  	  
-    steps:
-      - name: Semantic Release
-        uses: codfish/semantic-release-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          extra_plugins: |
-            @semantic-release/github
-      - name: Do something when a new release published
-        run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.semantic.outputs.RELEASE_VERSION }}
-          echo ${{ steps.semantic.outputs.new_release_major_version }}
-          echo ${{ steps.semantic.outputs.new_release_minor_version }}
-          echo ${{ steps.semantic.outputs.new_release_patch_version }}
   gitpull:
     runs-on: ubuntu-latest
     steps:
