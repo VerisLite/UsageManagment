@@ -119,4 +119,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: cn-north-1
         with:
-          args: '"rollout status deployment/umapi"'
+          args: '"rollout status deployment/umapi -n verisdemo"'
