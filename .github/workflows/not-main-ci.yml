@@ -1,4 +1,4 @@
-name: No main ci
+name: dev-ci
 on:
   push:
     branches-ignore:    
