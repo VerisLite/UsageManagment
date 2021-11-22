@@ -14,7 +14,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
   continue_deployment:
-      if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')" 
+      if: "!contains(github.event.head_commit.message, '***NO_CI***')"
       runs-on: ubuntu-latest
       steps:  
         - name: Check-out project
