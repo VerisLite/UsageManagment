@@ -113,10 +113,9 @@ jobs:
           args: rollout restart deployment/umapi -n verisdemo
       - name: verify deployment
         uses: ianbelcher/eks-kubectl-action@master
-        env:
-          kube_confg_data: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: cn-north-1
-        with:
-          args: '"rollout status deployment/umapi -n verisdemo"'
+          cluster_name: verislitecloud
+          args: rollout status deployment/umapi -n verisdemo
