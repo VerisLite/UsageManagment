@@ -1,4 +1,4 @@
-name: UM-CICD-FINAL
+name: release-cicd
 on:
   push:
     branches: [ main ]
