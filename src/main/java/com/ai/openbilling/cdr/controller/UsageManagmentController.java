@@ -150,7 +150,7 @@ public class UsageManagmentController {
 		String uNumber=bo.getuNumber();
 		relatedParty.setHref("https://api.verislitedemo.com/api/partyManagement/v4/individual/"+uNumber);
 		relatedParty.setId(uNumber);
-		relatedParty.setName(uNumber);
+	       relatedParty.setName(uNumber);
 		relatedParty.setReferredType("Individual");
 		relatedParty.setRole("Customer");
 		relatedPartys.add(relatedParty);
