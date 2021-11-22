@@ -62,8 +62,8 @@ public class UsageManagmentController {
 	
 		reqBo.setPhoneNumber(phoneNumber);
 		reqBo.setAcctId(acctId);
-		reqBo.setStartDate(getDate(startDate,"yyyyMMddHH:mm:ss"));
-		reqBo.setEndDate(getDate(endDate,"yyyyMMddHH:mm:ss"));
+		reqBo.setStartDate(getDate(startDate,"yyyyMMddHHmmss"));
+		reqBo.setEndDate(getDate(endDate,"yyyyMMddHHmmss"));
 		
 		reqBo.setServerList(serviceList);
 		String jsonStr=JSONUtil.toJsonStr(reqBo);
