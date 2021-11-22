@@ -111,10 +111,10 @@ public class UsageManagmentController {
 		List<RatedProductUsage> ratedProductUsages=new ArrayList<RatedProductUsage> ();
 		RatedProductUsage ratedProductUsage=new RatedProductUsage();
 		Money bucketValueConvertedInAmount=new Money ();
-		bucketValueConvertedInAmount.setUnit("MB");
+		bucketValueConvertedInAmount.setUnit("bytes");
 		float value=0;
 		if(StringUtils.isNotEmpty(bo.getUnit())) {
-			value=Float.parseFloat(bo.getUnit())/1024*1024;
+			value=Float.parseFloat(bo.getUnit());
 		}
 		bucketValueConvertedInAmount.setValue(value);
 		ratedProductUsage.setBucketValueConvertedInAmount(bucketValueConvertedInAmount);

@@ -23,7 +23,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("Usagemanagement API Doc")
-                .description("This is a restful api document of fjs-inbound.")
+                .description("This is a restful api Usagemanagement.")
                 .version("1.0")
                 .build();
     }
