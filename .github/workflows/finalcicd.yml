@@ -128,7 +128,7 @@ jobs:
       - name: Run JMeter Action
         uses: rbhadti94/apache-jmeter-action@v0.3.1
         with:
-          testFilePath: umapi.jmx
+          testFilePath: src/umapi.jmx
           outputReportsFolder: apitest/
           args: "--loglevel INFO"
 
