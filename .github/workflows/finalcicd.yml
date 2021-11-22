@@ -3,6 +3,43 @@ on:
   push:
     branches: [ main ]
 jobs:
+  tag-test:
+    runs-on: ubuntu-latest 
+    steps:
+    - run: codfish/semantic-release-action@v1
+      with:
+        dry_run: true
+        branches: |
+          [
+            '+([0-9])?(.{+([0-9]),x}).x',
+            'master',
+            'next',
+            'next-major',
+            {
+              name: 'beta',
+              prerelease: true
+            },
+            {
+              name: 'alpha',
+              prerelease: true
+            }
+          ]
+        repository_url: https://github.com/codfish/semantic-release-action.git
+        tag_format: 'v${version}'
+        extends: '@semantic-release/apm-config'
+        plugins: |
+          ['@semantic-release/commit-analyzer', '@semantic-release/github']
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+    - name: Build with Docker
+      run: docker build -t 906295378353.dkr.ecr.cn-north-1.amazonaws.com.cn/litedemo/usage-managment:${version} .
   gitpull:
     runs-on: ubuntu-latest
     steps:
