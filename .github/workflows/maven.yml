@@ -1,0 +1,27 @@
+name: Delivery-CD
+
+on:
+  push:
+    tags-ignore:  
+      -'**' 
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest 
+    steps:
+      # --- # 
+      - name: Restart Service
+        uses: ianbelcher/eks-kubectl-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: cn-north-1
+          cluster_name: verislitecloud
+          args: rollout restart deployment/umapi -n verisdemo
+      - name: verify deployment
+        uses: ianbelcher/eks-kubectl-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: cn-north-1
+          cluster_name: verislitecloud
+          args: rollout status deployment/umapi -n verisdemo
