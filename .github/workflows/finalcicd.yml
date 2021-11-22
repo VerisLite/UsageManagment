@@ -6,7 +6,7 @@ jobs:
   tag-test:
     runs-on: ubuntu-latest 
     steps:
-    - run: codfish/semantic-release-action@v1
+    - uses: codfish/semantic-release-action@v1
       with:
         dry_run: true
         branches: |
