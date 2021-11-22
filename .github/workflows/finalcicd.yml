@@ -119,3 +119,20 @@ jobs:
           aws_region: cn-north-1
           cluster_name: verislitecloud
           args: rollout status deployment/umapi -n verisdemo
+  apitest:
+    needs: Deploy
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run JMeter Action
+        uses: ./
+        with:
+          testFilePath: apitest/umapi.jmx
+          outputReportsFolder: apitest/
+          args: "--loglevel INFO"
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jmeter-test-results
+          path: apitest/
