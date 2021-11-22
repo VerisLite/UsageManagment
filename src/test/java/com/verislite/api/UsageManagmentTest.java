@@ -28,7 +28,6 @@ public class UsageManagmentTest  {
 		String fields="";
 		Integer offset=1;
 		Integer limit=10;
-		
 		System.out.println("add log");
 		System.out.println("testUsageQry2");
     }
