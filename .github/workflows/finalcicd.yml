@@ -124,7 +124,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run command
-        run: ls $GITHUB_WORKSPACE 
+        run: pwd 
       - name: Run JMeter Action
         uses: rbhadti94/apache-jmeter-action@v0.3.1
         with:
