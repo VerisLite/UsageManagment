@@ -110,5 +110,5 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: cn-north-1
           cluster_name: verislitecloud
-          args: rollout restart deployment/usage-service -n verisdemo
+          args: rollout restart deployment/umapi -n verisdemo
 
