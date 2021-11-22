@@ -140,7 +140,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run JMeter Action
-        uses: ./
+        uses: rbhadti94/apache-jmeter-action@v0.3.1
         with:
           testFilePath: apitest/umapi.jmx
           outputReportsFolder: apitest/
