@@ -138,7 +138,7 @@ public class UsageManagmentController {
 		
 		Money taxIncludedRatingAmount =new Money ();
 		taxIncludedRatingAmount.setUnit("USD");
-		taxExcludedRatingAmount.setValue(paid);
+		taxIncludedRatingAmount.setValue(paid);
 		ratedProductUsage.setTaxIncludedRatingAmount(taxIncludedRatingAmount);
 		ratedProductUsage.setTaxRate(0f);
 		ratedProductUsage.setUsageRatingTag(bo.getCallCategory());
