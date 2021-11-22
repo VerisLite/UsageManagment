@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ai.openbilling.cdr.config.PropertiesConfig;
 import com.ai.openbilling.cdr.domain.CdrReqBo;
@@ -38,7 +39,7 @@ import cn.hutool.json.JSONUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Controller
+@RestController
 @Api(tags = "UsageManagmentController", description = "Usage Managment")
 @RequestMapping("/usageManagment")
 public class UsageManagmentController {
@@ -54,6 +55,7 @@ public class UsageManagmentController {
 	
 	@ApiOperation(value="Query usage")
 	@RequestMapping(value = "/listUsage",method= {RequestMethod.GET})
+	
 	public UsageResponse listUsage(@RequestParam(value = "phoneNumber", required = false) String phoneNumber,@RequestParam(value = "acctId", required = false) Long acctId,
 			@RequestParam(value = "startDate", required = false) String startDate,@RequestParam(value = "endDate", required = false) String endDate,@RequestParam(value = "serviceList", required = false) List<String> serviceList){
 		Map<String, String> headers = new HashMap<String, String>();
