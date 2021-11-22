@@ -18,7 +18,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:  
         - name: Check-out project
-          uses: actions/checkout@v1
+          run: echo "skip"
   junit-test:
     needs: gitpull
     runs-on: ubuntu-latest
