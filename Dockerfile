@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:11
 MAINTAINER Ayuancool <303148062@qq.com>
 
 ENV APP_VERSION 0.0.1-SNAPSHOT
