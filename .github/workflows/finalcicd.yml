@@ -14,10 +14,11 @@ jobs:
         distribution: 'adopt'
         cache: maven
   continue_deployment:
+      if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')" 
       runs-on: ubuntu-latest
       steps:  
-        - name: Do something when a new release published
-          if: steps.semantic.outputs.new_release_published == 'true'        
+        - name: Check-out project
+          uses: actions/checkout@v1
   junit-test:
     needs: gitpull
     runs-on: ubuntu-latest
