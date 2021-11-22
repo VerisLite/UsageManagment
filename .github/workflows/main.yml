@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  apitest:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run command
+        run: pwd
+      - name: Run JMeter Action
+        uses: rbhadti94/apache-jmeter-action@v0.3.1
+        with:
+          testFilePath: src/umapi.jmx
+          outputReportsFolder: apitest/
+          args: "--loglevel INFO"
+      - name: Run command
+        run: ls -al
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: jmeter-test-results
+          path: apitest/
