@@ -54,26 +54,18 @@ public class UsageManagmentController {
 	
 	@ApiOperation(value="Query usage")
 	@RequestMapping(value = "/listUsage",method= {RequestMethod.GET})
-	public UsageResponse listUsage(@RequestParam(value = "fields", required = false) String fields){
+	public UsageResponse listUsage(@RequestParam(value = "phoneNumber", required = false) String phoneNumber,@RequestParam(value = "acctId", required = false) Long acctId,
+			@RequestParam(value = "startDate", required = false) String startDate,@RequestParam(value = "endDate", required = false) String endDate,@RequestParam(value = "serviceList", required = false) List<String> serviceList){
 		Map<String, String> headers = new HashMap<String, String>();
-		if(StringUtils.isEmpty(fields)) {
-			throw new BusinessException("bad request parameter",500);
-		}
+
 		CdrReqBo reqBo=new CdrReqBo();
-		String [] paras=fields.split("\\|");
-		if(paras==null ||paras.length!=5) {
-			throw new BusinessException("bad request parameter",500);
-		}
-		reqBo.setPhoneNumber(paras[0]);
-		reqBo.setAcctId(Long.parseLong(paras[1]));
-		reqBo.setStartDate(getDate(paras[2],"yyyy-MM-dd HH:mm:ss"));
-		reqBo.setEndDate(getDate(paras[3],"yyyy-MM-dd HH:mm:ss"));
-		List<String> serverList=new ArrayList<>();
-		String[] serviceArray=paras[4].split(",");
-		for(String service:serviceArray) {
-			serverList.add(service);
-		}
-		reqBo.setServerList(serverList);
+	
+		reqBo.setPhoneNumber(phoneNumber);
+		reqBo.setAcctId(acctId);
+		reqBo.setStartDate(getDate(startDate,"yyyyMMddHH:mm:ss"));
+		reqBo.setEndDate(getDate(endDate,"yyyyMMddHH:mm:ss"));
+		
+		reqBo.setServerList(serviceList);
 		String jsonStr=JSONUtil.toJsonStr(reqBo);
 		ResponseEntity<String> response=resetfulHandler.callReseful(propertiesConfig.getCdrUrl(),
 				HttpMethod.POST, 
