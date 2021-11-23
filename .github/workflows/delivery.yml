@@ -1,4 +1,4 @@
-name: Delivery-CD
+name: delivery-cd
 
 on:
   push:
